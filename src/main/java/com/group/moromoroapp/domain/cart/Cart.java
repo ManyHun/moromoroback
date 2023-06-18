@@ -6,6 +6,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
+
 @Getter@Setter@ToString@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
@@ -25,7 +27,7 @@ public class Cart {
     private Member member;
 
     @Column
-    private LocalDate ca_date = LocalDate.now();
+    private LocalDate ca_date = LocalDate.now(ZoneId.of("Asia/Seoul"));
 
 
 

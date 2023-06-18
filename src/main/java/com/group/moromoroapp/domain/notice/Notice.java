@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 @Getter
 @Entity
@@ -23,10 +24,10 @@ public class Notice {
     private String no_content;
 
     @Column
-    private LocalDate no_date = LocalDate.now();
+    private LocalDate no_date = LocalDate.now(ZoneId.of("Asia/Seoul"));
 
     @Column
-    private LocalTime no_time = LocalTime.now();
+    private LocalTime no_time = LocalTime.now(ZoneId.of("Asia/Seoul"));
 
     @Column
     private String no_name;

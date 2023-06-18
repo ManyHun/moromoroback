@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 @Getter@Setter@ToString@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,10 +34,10 @@ public class Buyhistory {
     private String note;
 
     @Column
-    private LocalDate bu_date = LocalDate.now();
+    private LocalDate bu_date = LocalDate.now(ZoneId.of("Asia/Seoul"));
 
     @Column
-    private LocalTime bu_time =LocalTime.now();
+    private LocalTime bu_time =LocalTime.now(ZoneId.of("Asia/Seoul"));
 
     @ManyToOne
     @JoinColumn(name = "product_productid")
