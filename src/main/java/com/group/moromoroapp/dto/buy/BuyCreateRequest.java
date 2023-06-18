@@ -13,4 +13,6 @@ public class BuyCreateRequest {
     private long member_member_id;
     private String password;
     private String phonnum;
+    private String name;
+    private int ea;
 }

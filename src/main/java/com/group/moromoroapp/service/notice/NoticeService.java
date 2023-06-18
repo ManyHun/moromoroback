@@ -4,6 +4,7 @@ import com.group.moromoroapp.domain.notice.Notice;
 import com.group.moromoroapp.domain.notice.NoticeRepository;
 import com.group.moromoroapp.dto.notice.NoticeCreateRequest;
 import com.group.moromoroapp.dto.notice.NoticeUpdateRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,8 +22,9 @@ public class NoticeService {
         noticeRepository.save(new Notice(request.getNo_title(),request.getNo_content(), request.getNo_name()));
     }
 
-    public List<Notice> getNotice(long noticeId){
-        return noticeRepository.findAllByNoticeId(noticeId);
+    public List<Notice> getNotice(){
+        Sort sort = Sort.by(Sort.Direction.DESC, "noticeId");
+        return noticeRepository.findAll(sort);
     }
     @Transactional
     public void updateNotice(NoticeUpdateRequest request){

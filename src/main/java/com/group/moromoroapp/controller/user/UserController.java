@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://192.168.31.26:8080/")
+//@CrossOrigin(origins = "http://192.168.0.7:8080/")
+@CrossOrigin(origins = "*")
 public class UserController {
   private final UserServiceV2 userService;
 

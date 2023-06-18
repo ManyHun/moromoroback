@@ -52,8 +52,13 @@ public class Buyhistory {
     @Column
     private String phonnum;
 
+    @Column
+    private String name;
 
-    public Buyhistory(String payoption, int shipping, String bu_postnumber, String adress, String note, Product product, Member member, String password, String phonnum) {
+    @Column
+    private int ea;
+
+    public Buyhistory(String payoption, int shipping, String bu_postnumber, String adress, String note, Product product, Member member, String password, String phonnum, String name, int ea) {
         this.payoption = payoption;
         this.shipping = shipping;
         this.bu_postnumber = bu_postnumber;
@@ -63,5 +68,19 @@ public class Buyhistory {
         this.member = member;
         this.password = password;
         this.phonnum = phonnum;
+        this.name = name;
+        this.ea = ea;
     }
+
+//    public Buyhistory(String payoption, int shipping, String bu_postnumber, String adress, String note, Product product, Member member, String password, String phonnum) {
+//        this.payoption = payoption;
+//        this.shipping = shipping;
+//        this.bu_postnumber = bu_postnumber;
+//        this.adress = adress;
+//        this.note = note;
+//        this.product = product;
+//        this.member = member;
+//        this.password = password;
+//        this.phonnum = phonnum;
+//    }
 }

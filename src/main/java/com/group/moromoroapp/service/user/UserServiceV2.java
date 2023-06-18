@@ -39,13 +39,16 @@ public class UserServiceV2 {
   @Transactional(readOnly = true)
   public List<Member> getMember(String userid){
     return userRepository.findByMeId(userid);
+
+
+
   }
 
   @Transactional
   public void updateUser(UserUpdateRequest request){
     Member member = userRepository.findByMemberId(request.getMemberId())
             .orElseThrow(IllegalArgumentException::new);
-    member.updateName(request.getMe_email(),request.getMe_password(),request.getMe_address1(),request.getMe_address2(),request.getMe_phone(),request.getMe_name(),request.getMe_postnumber(),request.getMe_division());
+    member.updateName(request.getMeEmail(),request.getMePassword(),request.getMeAddress1(),request.getMeAddress2(),request.getMePhone(),request.getMeName(),request.getMePostNumber(),request.getMeDivision());
   }
 
   @Transactional

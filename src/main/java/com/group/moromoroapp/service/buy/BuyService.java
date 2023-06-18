@@ -30,7 +30,7 @@ public class BuyService {
     public void saveBuy(BuyCreateRequest request){
         Product product = entityManager.find(Product.class, request.getProduct_productid());
         Member member = entityManager.find(Member.class, request.getMember_member_id());
-        Buyhistory buy = new Buyhistory(request.getPayoption(),request.getShipping(),request.getBu_postnumber(),request.getAdress(),request.getNote(),product,member,request.getPassword(),request.getPhonnum());
+        Buyhistory buy = new Buyhistory(request.getPayoption(),request.getShipping(),request.getBu_postnumber(),request.getAdress(),request.getNote(),product,member, request.getPassword(),request.getPhonnum(),request.getName(),request.getEa());
         buyRepository.save(buy);
     }
 

@@ -62,6 +62,11 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
+    public Product productChoice(Long prId){
+        return productRepository.findByProductid(prId);
+    }
+
+    @Transactional(readOnly = true)
     public long getProductsCount(String category) {
 
         if (category.equals("all")){

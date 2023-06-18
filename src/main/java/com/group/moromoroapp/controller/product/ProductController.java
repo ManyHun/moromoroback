@@ -1,5 +1,6 @@
 package com.group.moromoroapp.controller.product;
 
+import com.group.moromoroapp.domain.product.Product;
 import com.group.moromoroapp.dto.product.ProductCreateRequest;
 import com.group.moromoroapp.dto.product.ProductResponse;
 import com.group.moromoroapp.service.product.ProductService;
@@ -7,6 +8,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +18,8 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = "http://192.168.31.26:8080/")
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://192.168.0.7:8080/")
 public class ProductController {
     private final ProductService productService;
 
@@ -26,24 +29,48 @@ public class ProductController {
 
 
 
-    @GetMapping("/product")
-    public List<ProductResponse> getProduct(
-            @RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "8") int pageSize,
-            @RequestParam(required = false) String condition
-    ) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        Page<ProductResponse> productPage;
+//    @GetMapping("/product")
+//    public List<ProductResponse> getProduct(
+//            @RequestParam(defaultValue = "0") int pageNo,
+//            @RequestParam(defaultValue = "8") int pageSize,
+//            @RequestParam(required = false) String condition
+//    ) {
+//        Pageable pageable = PageRequest.of(pageNo, pageSize);
+//        Page<ProductResponse> productPage;
+//
+//        if (condition != null) {
+//
+//            productPage = productService.getProductsByCondition(condition, pageable);
+//        } else {
+//            productPage = productService.getProducts(pageable);
+//        }
+//
+//        List<ProductResponse> productList = productPage.getContent();
+//        return productList;
+//    }
+@GetMapping("/product")
+public List<ProductResponse> getProduct(
+        @RequestParam(defaultValue = "0") int pageNo,
+        @RequestParam(defaultValue = "8") int pageSize,
+        @RequestParam(required = false) String condition
+) {
+    Sort sort = Sort.by(Sort.Direction.DESC, "productid"); // 등록일자를 기준으로 역순 정렬
+    Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+    Page<ProductResponse> productPage;
 
-        if (condition != null) {
+    if (condition != null) {
+        productPage = productService.getProductsByCondition(condition, pageable);
+    } else {
+        productPage = productService.getProducts(pageable);
+    }
 
-            productPage = productService.getProductsByCondition(condition, pageable);
-        } else {
-            productPage = productService.getProducts(pageable);
-        }
+    List<ProductResponse> productList = productPage.getContent();
+    return productList;
+}
 
-        List<ProductResponse> productList = productPage.getContent();
-        return productList;
+    @GetMapping("/productchoice")
+    public Product productChoice(@RequestParam Long prId){
+        return productService.productChoice(prId);
     }
 
     @GetMapping("/productlength")
@@ -55,7 +82,7 @@ public class ProductController {
     //이미지를 디렉토리에 저장 ... 이미지부터 저장하고 이후 디비 저장할거임
     @PostMapping("/productImg")
     public String productImg(@RequestParam("file")MultipartFile file){
-        String uploadDir = "/Users/hanul_kim/Desktop/학원/프로젝트/library-app (2)id추가/src/main/resources/static/v1/static/imgs/";
+        String uploadDir = "/Users/hanul_kim/Desktop/학원/프로젝트/moromoro-app/src/main/resources/static/v1/static/imgs/";
         String retDir = "http://localhost:8083/v1/static/imgs/";
 //        String retDir = "/img/";
 

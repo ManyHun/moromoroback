@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "http://192.168.110.22:8080/")
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://192.168.0.7:8080/")
 public class NoticeController {
     private final NoticeService noticeService;
 
@@ -23,8 +24,8 @@ public class NoticeController {
     }
 
     @GetMapping("/notice")
-    public List<Notice> getNotice(@RequestParam Long noticeId){
-        return noticeService.getNotice(noticeId);
+    public List<Notice> getNotice(){
+        return noticeService.getNotice();
     }
 
     @PutMapping("/noticeUpdate")
