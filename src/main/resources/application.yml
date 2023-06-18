@@ -5,7 +5,7 @@ spring:
 #    username: "root"
     username: "hanul2"
 #    password: ""
-    password: "1g234"
+    password: "1234"
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
