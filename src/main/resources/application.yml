@@ -2,10 +2,10 @@
 spring:
   datasource:
     url: "jdbc:mysql://localhost/moromoro"
-    username: "root"
-#    username: "hanul2"
-    password: ""
-#    password: "1234"
+#    username: "root"
+    username: "hanul2"
+#    password: ""
+    password: "1g234"
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
