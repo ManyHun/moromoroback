@@ -82,8 +82,8 @@ public List<ProductResponse> getProduct(
     //이미지를 디렉토리에 저장 ... 이미지부터 저장하고 이후 디비 저장할거임
     @PostMapping("/productImg")
     public String productImg(@RequestParam("file")MultipartFile file){
-        String uploadDir = "/Users/hanul_kim/Desktop/학원/프로젝트/moromoro-app/src/main/resources/static/v1/static/imgs/";
-        String retDir = "http://localhost:8083/v1/static/imgs/";
+        String uploadDir = "/var/www/html/img/prductimg/";
+//        String retDir = "http://localhost:8083/v1/static/imgs/";
 //        String retDir = "/img/";
 
         String fileName = null;
@@ -97,8 +97,8 @@ public List<ProductResponse> getProduct(
         } catch (IOException e) {
         }
 
-        System.out.println(retDir+fileName + "." + extension);
-        return retDir+fileName + "." + extension;
+//        System.out.println(uploadDir+fileName + "." + extension);
+        return uploadDir+fileName + "." + extension;
 
     }
 
