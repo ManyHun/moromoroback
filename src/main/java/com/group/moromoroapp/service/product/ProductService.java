@@ -98,11 +98,11 @@ public class ProductService {
         for (int i = 0; i < imgs.size(); i++) {
             String filePath = imgs.get(i);
             //서버 올렸을때 ... 서버의 디렉토리경로로 변경하면 아래 작업 안함.
-//            String[] test = filePath.split("http://localhost:8083/v1/static/imgs/");
-//            System.out.println(test[1]);
-
+            String[] test = filePath.split("http://localhost:8083/v1/static/imgs/");
+            System.out.println(test[1]);
+///var/www/html/img/prductimg/
 //            File file = new File("/Users/hanul_kim/Desktop/학원/프로젝트/library-app (2)id추가/src/main/resources/static/v1/static/imgs/"+ test[1]);
-            File file = new File(filePath);
+            File file = new File("/var/www/html/"+filePath);
             file.delete();
         }
     }

@@ -83,7 +83,7 @@ public List<ProductResponse> getProduct(
     @PostMapping("/productImg")
     public String productImg(@RequestParam("file")MultipartFile file){
         String uploadDir = "/var/www/html/img/prductimg/";
-//        String retDir = "http://localhost:8083/v1/static/imgs/";
+        String retDir = "/img/prductimg/";
 //        String retDir = "/img/";
 
         String fileName = null;
@@ -98,7 +98,7 @@ public List<ProductResponse> getProduct(
         }
 
 //        System.out.println(uploadDir+fileName + "." + extension);
-        return uploadDir+fileName + "." + extension;
+        return retDir+fileName + "." + extension;
 
     }
 
