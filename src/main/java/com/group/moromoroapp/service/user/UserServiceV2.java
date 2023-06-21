@@ -27,6 +27,11 @@ public class UserServiceV2 {
   }
 
   @Transactional(readOnly = true)
+  public List<Member> userlist(){
+    return userRepository.findAll();
+  }
+
+  @Transactional(readOnly = true)
   public boolean userIdCheck(String userid){
     return userRepository.existsByMeId(userid);
   }

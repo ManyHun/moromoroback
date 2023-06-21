@@ -3,6 +3,7 @@ package com.group.moromoroapp.domain.product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.group.moromoroapp.domain.cart.Cart;
 import lombok.*;
+import org.hibernate.sql.Update;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -56,7 +57,16 @@ public class Product {
 
     }
 
+    public void updateProd(String pr_name, String mainimage, String serveimage, int price, int stock, String category, String explanation, int star, int totalsales) {
 
-
-
+        this.pr_name = pr_name;
+        this.mainimage = mainimage;
+        this.serveimage = serveimage;
+        this.price = price;
+        this.stock = stock;
+        this.category = category;
+        this.explanation = explanation;
+        this.star = star;
+        this.totalsales = totalsales;
+    }
 }

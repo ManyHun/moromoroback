@@ -24,6 +24,12 @@ public class UserController {
     userService.saveUser(request);
   }
 
+  @GetMapping("/userlist")
+  public List<Member> userlist(){
+    return userService.userlist();
+  }
+
+
   @GetMapping("/idchech")
   public boolean userIdCheck(@RequestParam String userid){
     return userService.userIdCheck(userid);
@@ -58,7 +64,6 @@ public class UserController {
   public void userDelete(@RequestParam Long meid) {
     userService.userDelete(meid);
   }
-
 
 
 }

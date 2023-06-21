@@ -1,9 +1,9 @@
 
 spring:
   datasource:
-    url: "jdbc:mysql://localhost/moromoro"
+    url: "jdbc:mysql://43.201.181.9/moromoro"
 #    username: "root"
-    username: "hanul2"
+    username: "root"
 #    password: ""
     password: "1234"
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,5 +15,5 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
-#server:
-#  port: 8083
+server:
+  port: 8080

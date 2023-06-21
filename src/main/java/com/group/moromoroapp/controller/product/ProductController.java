@@ -3,6 +3,7 @@ package com.group.moromoroapp.controller.product;
 import com.group.moromoroapp.domain.product.Product;
 import com.group.moromoroapp.dto.product.ProductCreateRequest;
 import com.group.moromoroapp.dto.product.ProductResponse;
+import com.group.moromoroapp.dto.product.ProductUpdateRequest;
 import com.group.moromoroapp.service.product.ProductService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.data.domain.Page;
@@ -48,6 +49,11 @@ public class ProductController {
 //        List<ProductResponse> productList = productPage.getContent();
 //        return productList;
 //    }
+@GetMapping("/adminproduct")
+public List<Product> adminProdGet(){
+        return  productService.adminProdGet();
+    }
+
 @GetMapping("/product")
 public List<ProductResponse> getProduct(
         @RequestParam(defaultValue = "0") int pageNo,
@@ -115,5 +121,10 @@ public List<ProductResponse> getProduct(
     }
 
     //상품구매로
+
+    @PutMapping("/productUpdate")
+    public void productUpdate(@RequestBody ProductUpdateRequest request){
+       productService.productUpdate(request);
+    }
 
 }
